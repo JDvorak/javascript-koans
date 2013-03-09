@@ -37,6 +37,7 @@ describe("About Applying What We Have Learnt", function() {
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
+
       var noMushrooms = function (i, j) {
               if (j > products[i].ingredients.length) {return true}
               else if (products[i].ingredients[j] === "mushrooms") {return false}
@@ -44,18 +45,13 @@ describe("About Applying What We Have Learnt", function() {
             }; 
 
       var canEat = function(i, array) {
-          if (i > products.length) {return array}
-
-          else if (products[i].containsNuts === false) {
-              if (noMushrooms(i, 0) === true) { debugger; array.push(products[i]); return canEat (i+1, array)}
-              else { return canEat(i+1, array) };      
-          };
-          return canEat(i+1, array)
-
+        debugger
+          if (i > products.length-1) {return array}
+          else if (products[i].containsNuts === true || noMushrooms(i,0) === false) {return canEat(i+1, array)}    
+          else {array.push(products[i]); return canEat(i+1, array)}
         };
-
+      console.log(canEat(0,[]))
       var productsICanEat = canEat(0, []);
-
       expect(productsICanEat.length).toBe(1);
   });
 
