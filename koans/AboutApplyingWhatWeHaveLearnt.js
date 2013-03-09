@@ -39,18 +39,17 @@ describe("About Applying What We Have Learnt", function() {
 
 
       var noMushrooms = function (i, j) {
-              if (j > products[i].ingredients.length) {return true}
-              else if (products[i].ingredients[j] === "mushrooms") {return false}
-              else {return noMushrooms(i, j+1)};
-            }; 
+          if (j > products[i].ingredients.length) {return true}
+          else if (products[i].ingredients[j] === "mushrooms") {return false}
+          else {return noMushrooms(i, j+1)};
+      }; 
 
       var canEat = function(i, array) {
-        debugger
           if (i > products.length-1) {return array}
           else if (products[i].containsNuts === true || noMushrooms(i,0) === false) {return canEat(i+1, array)}    
           else {array.push(products[i]); return canEat(i+1, array)}
         };
-      console.log(canEat(0,[]))
+        
       var productsICanEat = canEat(0, []);
       expect(productsICanEat.length).toBe(1);
   });
