@@ -104,11 +104,10 @@ describe("About Functions", function() {
       return a * b;
     };
     expect(multiply.toString()).toBe(
-      "function (a, b) {
-        //An internal comment
-        return a * b;
-      }"
-    );
+      "function (a, b) {\n\
+      //An internal comment\n\
+      return a * b;\n\
+    }");
   });
 
 
